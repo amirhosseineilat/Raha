@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Q
+from django.db.models import Q, F
 from django.conf import settings
 
 
@@ -116,4 +116,4 @@ class BreathingSession(models.Model):
                 ),
                 name="breath_session_feedback_only_after_completion",
             ),
-        ] 
+        ]

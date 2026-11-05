@@ -1,9 +1,6 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.db.models import Q
-
-User = get_user_model()
-
 
 class MoodFactor(models.Model):
     name = models.CharField(max_length=256, unique=True)
@@ -22,13 +19,13 @@ class DailyActivity(models.Model):
 
 
 class Mood(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="moods")
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="moods")
 
     score = models.IntegerField()
     stress_level = models.IntegerField()
     sleep_quality = models.IntegerField()
 
-    description = models.TextField()
+    description = models.TextField(blank=True)
 
     date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -47,7 +44,7 @@ class Mood(models.Model):
     )
 
     def __str__(self):
-        return self.user
+        return f"{self.user.email} - {self.date}"
 
     class Meta:
 

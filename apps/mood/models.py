@@ -3,7 +3,7 @@ from django.conf import settings
 from django.db.models import Q
 
 class MoodFactor(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -11,7 +11,7 @@ class MoodFactor(models.Model):
 
 
 class DailyActivity(models.Model):
-    name = models.CharField(max_length=256, unique=True)
+    name = models.CharField(max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):

@@ -45,9 +45,9 @@ class Article(models.Model):
             )
         ]
 
-        constrains = [
-            models.constraints(
-                Q(status="draft", published_at__isnull=True)
+        constraints = [
+            models.CheckConstraint(
+                condition=Q(status="draft", published_at__isnull=True)
                 | Q(stattus__in=["published", "archived"], published_at__isnull=False),
                 name="article_status_publication_date_valid",
             )

@@ -42,7 +42,8 @@ class Game(models.Model):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                condition=Q(game_type="external", game_url__isnull=True)
+                condition=Q(game_type="external", game_url__isnull=True),
+                name='external_game_url__isnull'
             )
         ]
 

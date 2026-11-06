@@ -58,7 +58,7 @@ class BreathingSession(models.Model):
     ended_at = models.DateTimeField(null=True, blank=True)
 
     status = models.CharField(
-        max_length=100, choices=Status, default=Status.IN_PROGRESS
+        max_length=100, choices=Status.choices, default=Status.IN_PROGRESS
     )
     feedback = models.CharField(
         max_length=100,

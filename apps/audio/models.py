@@ -49,7 +49,7 @@ class AudioSession(models.Model):
 
     status = models.CharField(
         max_length=100,
-        choices=Status,
+        choices=Status.choices,
         default=Status.PLAYING,
     )
 

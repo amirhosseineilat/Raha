@@ -31,7 +31,7 @@ class Article(models.Model):
         blank=True,
     )
 
-    published_status = models.CharField(
+    status = models.CharField(
         max_length=100,
         choices=Status.choices,
         default=Status.DRAFT,
@@ -48,7 +48,7 @@ class Article(models.Model):
         constraints = [
             models.CheckConstraint(
                 condition=Q(status="draft", published_at__isnull=True)
-                | Q(stattus__in=["published", "archived"], published_at__isnull=False),
+                | Q(status__in=["published", "archived"], published_at__isnull=False),
                 name="article_status_publication_date_valid",
             )
         ]

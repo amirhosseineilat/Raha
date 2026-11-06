@@ -42,8 +42,11 @@ class Game(models.Model):
     class Meta:
         constraints = [
             models.CheckConstraint(
-                condition=Q(game_type="external", game_url__isnull=True),
-                name='external_game_url__isnull'
+                condition=(
+                    Q(game_type="internal", game_url="")
+                    | Q(game_type="external", game_url__gt="")
+                ),
+                name="game_type_url_valid",
             )
         ]
 
@@ -59,15 +62,11 @@ class GameCategoryRelation(models.Model):
 
     class Meta:
         constraints = [
-            models.CheckConstraint(
-                condition=(
-                    Q(game_type="internal", game_url="")
-                    | Q(game_type="external", game_url__gt="")
-                ),
-                name="game_type_url_valid",
+            models.UniqueConstraint(
+                fields=['game','game_category'],
+                name='unique_game_category'
             )
         ]
-
 
 class GameSession(models.Model):
     class Status(models.TextChoices):
@@ -94,7 +93,7 @@ class GameSession(models.Model):
     class Meta:
         indexes = [
             models.Index(
-                fields=["user", "started_at"], name="user_started_at_game_session_idx"
+                fields=["user", "started_at"], name="started_at_game_session_idx"
             )
         ]
         constraints = [

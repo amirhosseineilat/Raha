@@ -60,7 +60,7 @@ class AudioSession(models.Model):
 
         constraints = [
             models.CheckConstraint(
-                condition=(Q(status__in=["playing", "paused"], ended_in__isnull=True))
+                condition=(Q(status__in=["playing", "paused"], ended_at__isnull=True))
                 | Q(
                     status__in=["completed", "stopped", "interrupted"],
                     ended_at__isnull=False,

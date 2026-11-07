@@ -14,7 +14,17 @@ class DailyActivityAdmin(admin.ModelAdmin):
 
 @admin.register(Mood)
 class MoodAdmin(admin.ModelAdmin):
-    list_display = ["id", "game", "game_category"]
+    list_display = [
+        "id",
+        "user",
+        "score",
+        "stress_level",
+        "sleep_quality",
+        "description",
+        "date",
+        "created_at",
+        "updated_at",
+    ]
 
 
 @admin.register(MoodEntryFactor)

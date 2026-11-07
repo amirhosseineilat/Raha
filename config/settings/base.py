@@ -28,10 +28,9 @@ environ.Env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # Internationalization
-LANGUAGE_CODE = env("DJANGO_LANGUAGE_CODE", default="fa")
+LANGUAGE_CODE = env("DJANGO_LANGUAGE_CODE", default="en-us")
 TIME_ZONE = env("DJANGO_TIME_ZONE", default="Asia/Tehran")
 
-USE_I18N = True
 USE_TZ = True
 
 # Application definition
@@ -60,6 +59,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

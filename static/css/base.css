@@ -1,0 +1,139 @@
+/* =========================================
+   1. Raha Design Tokens
+========================================= */
+
+:root {
+    /* Colors */
+    --raha-primary: #39788D;
+    --raha-primary-dark: #28596B;
+    --raha-primary-light: #E1EDF3;
+
+    --raha-background: #EEF3F8;
+    --raha-surface: #FFFFFF;
+
+    --raha-text: #263746;
+    --raha-text-muted: #81909D;
+
+    --raha-border: #DFE7ED;
+
+    /* Typography */
+    --raha-font-family: "Vazirmatn", Tahoma, sans-serif;
+
+    /* Border Radius */
+    --raha-radius-sm: 8px;
+    --raha-radius-md: 12px;
+    --raha-radius-lg: 18px;
+    --raha-radius-xl: 24px;
+    --raha-radius-full: 999px;
+
+    /* Shadows */
+    --raha-shadow-sm: 0 2px 8px rgba(38, 55, 70, 0.04);
+    --raha-shadow-md: 0 8px 24px rgba(38, 55, 70, 0.06);
+
+    /* Transitions */
+    --raha-transition: 0.25s ease;
+
+    /* Bootstrap Overrides */
+    --bs-primary: #39788D;
+    --bs-primary-rgb: 57, 120, 141;
+
+    --bs-link-color: #39788D;
+    --bs-link-hover-color: #28596B;
+}
+
+
+/* =========================================
+   2. Body
+========================================= */
+
+body {
+    font-family: var(--raha-font-family);
+    direction: rtl;
+
+    color: var(--raha-text);
+    background-color: var(--raha-background);
+
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   3. Typography
+========================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--raha-primary-dark);
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+p {
+    color: var(--raha-text-muted);
+}
+
+
+/* =========================================
+   4. Global Elements
+========================================= */
+
+a {
+    text-decoration: none;
+    transition: var(--raha-transition);
+}
+
+img,
+svg,
+video {
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================
+   5. Accessibility
+========================================= */
+
+::selection {
+    color: var(--raha-surface);
+    background-color: var(--raha-primary);
+}
+
+:focus-visible {
+    outline: 3px solid var(--raha-primary);
+    outline-offset: 3px;
+}
+
+
+/* =========================================
+   6. Bootstrap Customization
+========================================= */
+
+.btn-primary {
+    --bs-btn-color: #FFFFFF;
+    --bs-btn-bg: var(--raha-primary);
+    --bs-btn-border-color: var(--raha-primary);
+
+    --bs-btn-hover-color: #FFFFFF;
+    --bs-btn-hover-bg: var(--raha-primary-dark);
+    --bs-btn-hover-border-color: var(--raha-primary-dark);
+
+    --bs-btn-active-bg: var(--raha-primary-dark);
+    --bs-btn-active-border-color: var(--raha-primary-dark);
+}
+
+.btn {
+    border-radius: var(--raha-radius-md);
+    transition: var(--raha-transition);
+}

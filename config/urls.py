@@ -33,5 +33,5 @@ urlpatterns = [
     path("reports/", include("apps.reports.urls")),
 
     path('',LandingPageView.as_view(),name='landing-page'),
-    path('about/',AboutPageView.as_view(),name='about-page'),
+    path('about/',AboutPageView.as_view(),name='about'),
 ]

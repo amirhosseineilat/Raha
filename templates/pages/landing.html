@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    رها | همراه تو برای آرامش بیشتر
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pages/landing.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="landing-page">
+
+    <!-- Hero Section -->
+    <section class="hero">
+
+        <div class="container">
+            <div class="row align-items-center gy-5">
+
+                <div class="col-lg-6">
+                    <div class="hero-content">
+
+                        <span class="hero-badge">
+                            🌱 همراه تو در مسیر آرامش
+                        </span>
+
+                        <h1 class="hero-title">
+                            کمی مکث کن،
+                            <span>به خودت برگرد.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            رها فضایی برای شناخت احساسات، مدیریت استرس
+                            و مراقبت از سلامت روان توست.
+                            اینجا می‌تونی بدون قضاوت، خودت باشی.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a href="#start" class="btn btn-primary">
+                                شروع تجربه رها
+                            </a>
+
+                            <a href="#features" class="btn btn-outline-primary">
+                                آشنایی با امکانات
+                            </a>
+
+                        </div>
+
+                        <div class="hero-trust">
+                            <span>✓</span>
+                            فضایی امن، ساده و بدون قضاوت
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+
+                    <div class="hero-visual">
+
+                        <div class="hero-circle hero-circle-one"></div>
+                        <div class="hero-circle hero-circle-two"></div>
+
+                        <div class="hero-main-card">
+
+                            <div class="hero-card-icon">
+                                🌿
+                            </div>
+
+                            <span class="hero-card-label">
+                                یک لحظه برای خودت
+                            </span>
+
+                            <h3>
+                                همین‌جا،
+                                <br>
+                                همین لحظه،
+                                <br>
+                                نفس بکش.
+                            </h3>
+
+                            <p>
+                                لازم نیست همیشه قوی باشی.
+                                گاهی فقط به کمی مکث نیاز داری.
+                            </p>
+
+                            <div class="hero-card-footer">
+                                <span>امروز رو با خودت شروع کن</span>
+                                <span>♡</span>
+                            </div>
+
+                        </div>
+
+                        <div class="floating-card floating-card-top">
+                            <span>☀️</span>
+                            <span>روزت رو آرام شروع کن</span>
+                        </div>
+
+                        <div class="floating-card floating-card-bottom">
+                            <span>💙</span>
+                            <span>به احساساتت گوش بده</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-badge">
+                    امکانات رها
+                </span>
+
+                <h2>
+                    مراقبت از خود، از همین‌جا شروع می‌شود.
+                </h2>
+
+                <p>
+                    ابزارهایی ساده برای اینکه ارتباط بهتری با خودت داشته باشی.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">💙</div>
+                        <h3>شناخت احساسات</h3>
+                        <p>
+                            احساسات روزانه‌ات رو ثبت کن و تغییرات حال روحی خودت رو بشناس.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">🌬️</div>
+                        <h3>تمرین تنفس</h3>
+                        <p>
+                            با تمرین‌های تنفسی ساده، کمی از فشار و تنش روزانه فاصله بگیر.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎧</div>
+                        <h3>صداهای آرامش‌بخش</h3>
+                        <p>
+                            به مجموعه‌ای از صداها و محتوای صوتی برای لحظات آرامش دسترسی داشته باش.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>یادگیری و آگاهی</h3>
+                        <p>
+                            با محتوای آموزشی، بیشتر درباره احساسات و سلامت روان یاد بگیر.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>بازی‌های تعاملی</h3>
+                        <p>
+                            از فعالیت‌های تعاملی برای شناخت بهتر خودت استفاده کن.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <article class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>گزارش پیشرفت</h3>
+                        <p>
+                            روند تغییرات و فعالیت‌های خودت رو در طول زمان بررسی کن.
+                        </p>
+                    </article>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <span class="section-badge">
+                    شروعی ساده
+                </span>
+
+                <h2>
+                    رها چطور بهت کمک می‌کنه؟
+                </h2>
+
+                <p>
+                    برای شروع مراقبت از خودت، فقط به چند قدم ساده نیاز داری.
+                </p>
+
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <article class="step-card">
+                        <span class="step-number">01</span>
+                        <h3>خودت رو بشناس</h3>
+                        <p>
+                            احساسات و وضعیت روزانه‌ات رو ثبت کن.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-4">
+                    <article class="step-card">
+                        <span class="step-number">02</span>
+                        <h3>برای خودت وقت بذار</h3>
+                        <p>
+                            از تمرین‌ها و ابزارهای رها استفاده کن.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="col-md-4">
+                    <article class="step-card">
+                        <span class="step-number">03</span>
+                        <h3>مسیرت رو دنبال کن</h3>
+                        <p>
+                            تغییرات و پیشرفت خودت رو بررسی کن.
+                        </p>
+                    </article>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta" id="start">
+
+        <div class="container">
+
+            <div class="cta-content">
+
+                <span class="cta-icon">💙</span>
+
+                <h2>
+                    امروز، یک قدم برای خودت بردار.
+                </h2>
+
+                <p>
+                    لازم نیست همه‌چیز رو یک‌باره تغییر بدی.
+                    از یک قدم کوچک شروع کن.
+                </p>
+
+                <a href="#" class="btn btn-light">
+                    شروع کن
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

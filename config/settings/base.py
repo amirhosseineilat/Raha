@@ -113,6 +113,10 @@ AUTH_PASSWORD_VALIDATORS = [
 STATIC_URL = env("STATIC_URL", default="/static/")
 MEDIA_URL = env("MEDIA_URL", default="/media/")
 
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / "media"
 

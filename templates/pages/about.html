@@ -1,0 +1,252 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}درباره رها | همراهی برای حال بهتر{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="about-page">
+
+    <!-- Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-7">
+                    <span class="about-badge">
+                        درباره رها
+                    </span>
+
+                    <h1 class="about-hero-title">
+                        گاهی فقط کافیه
+                        <span>کمی به خودت فرصت بدی.</span>
+                    </h1>
+
+                    <p class="about-hero-description">
+                        رها فضایی امن و آرام برای شناخت احساسات،
+                        مدیریت استرس و مراقبت بیشتر از خودته.
+                        ما اینجا هستیم تا در مسیر رسیدن به حال بهتر،
+                        همراهت باشیم.
+                    </p>
+
+                    <a href="#our-mission" class="btn btn-primary">
+                        بیشتر با رها آشنا شو
+                    </a>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="about-hero-visual">
+                        <div class="about-visual-circle"></div>
+
+                        <div class="about-visual-card">
+                            <span class="visual-icon">♡</span>
+
+                            <h3>به خودت فرصت بده</h3>
+
+                            <p>
+                                مراقبت از خودت، از همین لحظه شروع می‌شه.
+                            </p>
+
+                            <div class="visual-decoration">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Mission -->
+    <section class="about-section" id="our-mission">
+        <div class="container">
+
+            <div class="section-heading text-center">
+                <span class="section-badge">مأموریت ما</span>
+
+                <h2>
+                    چرا رها به وجود اومد؟
+                </h2>
+
+                <p>
+                    چون مراقبت از سلامت روان باید ساده‌تر،
+                    در دسترس‌تر و بخشی از زندگی روزمره باشه.
+                </p>
+            </div>
+
+            <div class="mission-card">
+                <div class="mission-icon">✦</div>
+
+                <h3>هدف ما همراهی توئه</h3>
+
+                <p>
+                    رها با این ایده شکل گرفت که هر کسی باید فضایی
+                    برای شناخت احساسات، توجه به نیازهای خودش و
+                    پیدا کردن راه‌هایی برای مدیریت استرس داشته باشه.
+
+                    ما تلاش می‌کنیم ابزارهای کاربردی و ساده‌ای
+                    در اختیارت قرار بدیم تا بتونی قدم‌های کوچکی
+                    برای مراقبت از خودت برداری.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Why Raha -->
+    <section class="about-section about-section-soft">
+        <div class="container">
+
+            <div class="section-heading text-center">
+                <span class="section-badge">چرا رها؟</span>
+
+                <h2>
+                    مراقبت از خود، به زبان ساده
+                </h2>
+
+                <p>
+                    قرار نیست همه‌چیز رو یک‌باره تغییر بدی.
+                    گاهی قدم‌های کوچک هم ارزشمندند.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="why-card">
+                        <div class="why-icon">♡</div>
+
+                        <h4>شناخت احساسات</h4>
+
+                        <p>
+                            احساسات روزانه‌ات رو ثبت کن و
+                            الگوهای رفتاری خودت رو بهتر بشناس.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="why-card">
+                        <div class="why-icon">◌</div>
+
+                        <h4>آرامش در لحظه</h4>
+
+                        <p>
+                            با تمرین‌های تنفسی و ابزارهای آرام‌سازی،
+                            لحظاتی رو به خودت اختصاص بده.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="why-card">
+                        <div class="why-icon">✧</div>
+
+                        <h4>یادگیری و رشد</h4>
+
+                        <p>
+                            با محتوای آموزشی و فعالیت‌های تعاملی،
+                            مسیر خودشناسی رو ادامه بده.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Features -->
+    <section class="about-section">
+        <div class="container">
+
+            <div class="section-heading text-center">
+                <span class="section-badge">امکانات رها</span>
+
+                <h2>
+                    ابزارهایی برای مراقبت بیشتر از خودت
+                </h2>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>ثبت احساسات</h4>
+                        <p>احساسات روزانه‌ات رو ثبت و دنبال کن.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>تمرین تنفس</h4>
+                        <p>با تمرین‌های هدایت‌شده لحظه‌ای مکث کن.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>پشتیبانی اضطراب</h4>
+                        <p>در لحظات دشوار به ابزارهای حمایتی دسترسی داشته باش.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>موسیقی آرامش‌بخش</h4>
+                        <p>برای خودت فضایی آرام‌تر ایجاد کن.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>محتوای آموزشی</h4>
+                        <p>درباره سلامت روان و مراقبت از خود یاد بگیر.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="about-feature-card">
+                        <h4>بازی‌های تعاملی</h4>
+                        <p>از فعالیت‌های ساده و سرگرم‌کننده استفاده کن.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="about-cta">
+        <div class="container">
+
+            <h2>
+                از همین امروز، کمی بیشتر مراقب خودت باش.
+            </h2>
+
+            <p>
+                رها می‌تونه نقطه شروع این مسیر باشه.
+            </p>
+
+            <a href="/" class="btn btn-light">
+                شروع با رها
+            </a>
+
+        </div>
+    </section>
+
+</div>
+
+{% endblock %}

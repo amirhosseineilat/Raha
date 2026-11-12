@@ -1,0 +1,421 @@
+/* =========================================
+   About Page
+========================================= */
+
+.about-page {
+    overflow: hidden;
+    background-color: var(--raha-surface);
+}
+
+
+/* =========================================
+   Hero
+========================================= */
+
+.about-hero {
+    padding: 100px 0;
+    background-color: var(--raha-background);
+}
+
+.about-badge,
+.section-badge {
+    display: inline-block;
+    padding: 8px 16px;
+
+    color: var(--raha-primary);
+    background-color: var(--raha-primary-light);
+
+    border-radius: var(--raha-radius-full);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.about-hero-title {
+    margin-top: 24px;
+
+    color: var(--raha-text);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 800;
+    line-height: 1.7;
+}
+
+.about-hero-title span {
+    display: block;
+    color: var(--raha-primary);
+}
+
+.about-hero-description {
+    max-width: 580px;
+    margin: 24px 0 30px;
+
+    color: var(--raha-text-muted);
+    font-size: 16px;
+    line-height: 2.2;
+}
+
+
+/* Hero Visual */
+
+.about-hero-visual {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 380px;
+}
+
+.about-visual-circle {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background-color: var(--raha-primary-light);
+    border-radius: 50%;
+
+    opacity: 0.8;
+}
+
+.about-visual-card {
+    position: relative;
+    z-index: 1;
+
+    width: 300px;
+    padding: 38px 30px;
+
+    background-color: var(--raha-surface);
+    border: 1px solid var(--raha-border);
+    border-radius: var(--raha-radius-xl);
+
+    box-shadow: var(--raha-shadow-md);
+
+    text-align: center;
+}
+
+.visual-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 25px;
+
+    color: var(--raha-primary);
+    background-color: var(--raha-primary-light);
+
+    border-radius: 20px;
+
+    font-size: 34px;
+}
+
+.about-visual-card h3 {
+    margin-bottom: 12px;
+
+    color: var(--raha-text);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.about-visual-card p {
+    margin: 0;
+
+    color: var(--raha-text-muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+.visual-decoration {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+
+    margin-top: 25px;
+}
+
+.visual-decoration span {
+    width: 7px;
+    height: 7px;
+
+    background-color: var(--raha-primary);
+    border-radius: 50%;
+
+    opacity: 0.4;
+}
+
+
+/* =========================================
+   General Sections
+========================================= */
+
+.about-section {
+    padding: 90px 0;
+}
+
+.about-section-soft {
+    background-color: var(--raha-background);
+}
+
+.section-heading {
+    max-width: 650px;
+    margin: 0 auto 50px;
+}
+
+.section-heading h2 {
+    margin: 20px 0 14px;
+
+    color: var(--raha-text);
+    font-size: clamp(25px, 3vw, 34px);
+    font-weight: 800;
+}
+
+.section-heading p {
+    margin: 0;
+
+    color: var(--raha-text-muted);
+    font-size: 15px;
+    line-height: 2;
+}
+
+
+/* =========================================
+   Mission
+========================================= */
+
+.mission-card {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 45px;
+
+    background-color: var(--raha-surface);
+    border: 1px solid var(--raha-border);
+    border-radius: var(--raha-radius-xl);
+
+    box-shadow: var(--raha-shadow-sm);
+
+    text-align: center;
+}
+
+.mission-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 22px;
+
+    color: var(--raha-primary);
+    background-color: var(--raha-primary-light);
+
+    border-radius: 20px;
+
+    font-size: 30px;
+}
+
+.mission-card h3 {
+    margin-bottom: 18px;
+
+    color: var(--raha-text);
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.mission-card p {
+    margin: 0;
+
+    color: var(--raha-text-muted);
+    font-size: 15px;
+    line-height: 2.4;
+}
+
+
+/* =========================================
+   Why Raha
+========================================= */
+
+.why-card {
+    height: 100%;
+    padding: 32px 25px;
+
+    background-color: var(--raha-surface);
+    border: 1px solid var(--raha-border);
+    border-radius: var(--raha-radius-lg);
+
+    transition: var(--raha-transition);
+}
+
+.why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--raha-shadow-md);
+}
+
+.why-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+
+    margin-bottom: 22px;
+
+    color: var(--raha-primary);
+    background-color: var(--raha-primary-light);
+
+    border-radius: 16px;
+
+    font-size: 26px;
+}
+
+.why-card h4 {
+    margin-bottom: 12px;
+
+    color: var(--raha-text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.why-card p {
+    margin: 0;
+
+    color: var(--raha-text-muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* =========================================
+   Features
+========================================= */
+
+.about-feature-card {
+    height: 100%;
+    padding: 28px;
+
+    background-color: var(--raha-surface);
+    border: 1px solid var(--raha-border);
+    border-radius: var(--raha-radius-lg);
+
+    transition: var(--raha-transition);
+}
+
+.about-feature-card:hover {
+    border-color: var(--raha-primary);
+    box-shadow: var(--raha-shadow-sm);
+}
+
+.about-feature-card h4 {
+    margin-bottom: 12px;
+
+    color: var(--raha-primary-dark);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.about-feature-card p {
+    margin: 0;
+
+    color: var(--raha-text-muted);
+    font-size: 14px;
+    line-height: 2;
+}
+
+
+/* =========================================
+   CTA
+========================================= */
+
+.about-cta {
+    margin: 40px auto 80px;
+    padding: 65px 25px;
+
+    background-color: var(--raha-primary);
+    border-radius: var(--raha-radius-xl);
+
+    text-align: center;
+}
+
+.about-cta h2 {
+    margin-bottom: 15px;
+
+    color: #FFFFFF;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 800;
+}
+
+.about-cta p {
+    margin-bottom: 25px;
+
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+}
+
+.about-cta .btn {
+    padding: 12px 30px;
+
+    color: var(--raha-primary-dark);
+    font-weight: 700;
+    border-radius: var(--raha-radius-md);
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    .about-hero {
+        padding: 70px 0;
+    }
+
+    .about-hero-visual {
+        min-height: 320px;
+    }
+
+    .about-section {
+        padding: 70px 0;
+    }
+
+}
+
+@media (max-width: 767.98px) {
+
+    .about-hero {
+        padding: 55px 0;
+        text-align: center;
+    }
+
+    .about-hero-description {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .about-hero-visual {
+        min-height: 300px;
+    }
+
+    .about-section {
+        padding: 60px 0;
+    }
+
+    .mission-card {
+        padding: 30px 22px;
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .about-cta {
+        margin: 20px 15px 50px;
+        padding: 45px 20px;
+    }
+
+}

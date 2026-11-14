@@ -32,6 +32,6 @@ urlpatterns = [
     path("notifications/", include("apps.notifications.urls")),
     path("reports/", include("apps.reports.urls")),
 
-    path('',LandingPageView.as_view(),name='landing-page'),
+    path('',LandingPageView.as_view(),name='landing'),
     path('about/',AboutPageView.as_view(),name='about'),
 ]

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}ورود | رها{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="container">
+        <div class="auth-wrapper">
+
+            <!-- Form Section -->
+            <div class="auth-form-section">
+
+                <a href="{% url 'landing' %}" class="auth-brand">
+                    <span class="brand-icon">R</span>
+                    <span class="brand-name">رها</span>
+                </a>
+
+                <div class="auth-heading">
+                    <h1>خوش برگشتی!</h1>
+                    <p>
+                        برای ادامه مسیر مراقبت از خودت،
+                        وارد حساب کاربریت شو.
+                    </p>
+                </div>
+
+                <form method="post" class="auth-form">
+
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    {% for field in form %}
+
+                        <div class="auth-form-group">
+
+                            <label for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                            </label>
+
+                            {{ field }}
+
+                            {% for error in field.errors %}
+                                <div class="field-error">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                    {% endfor %}
+
+                    <div class="auth-extra">
+                        <a href="{% url 'password_reset' %}">
+                            رمز عبورت رو فراموش کردی؟
+                        </a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">
+                        ورود به حساب کاربری
+                    </button>
+
+                </form>
+
+                <div class="auth-footer">
+                    هنوز حساب کاربری نداری؟
+                    <a href="{% url 'register' %}">ثبت‌نام کن</a>
+                </div>
+
+            </div>
+
+
+            <!-- Visual Section -->
+            <div class="auth-visual-section">
+
+                <div class="auth-visual-content">
+
+                    <div class="auth-visual-icon">✦</div>
+
+                    <h2>
+                        دوباره به خودت
+                        فرصت بده.
+                    </h2>
+
+                    <p>
+                        هر روز فرصتی تازه برای شناخت خودت،
+                        آرامش بیشتر و برداشتن قدم‌های کوچیکه.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

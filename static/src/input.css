@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+/* =========================================
+   Source Detection
+========================================= */
+
+@source "../../templates";
+@source "../../apps";
+
+/* =========================================
+   Raha Design System
+========================================= */
+
+@theme {
+
+    /* Colors */
+
+    --color-raha-primary: #39788D;
+    --color-raha-primary-dark: #28596B;
+    --color-raha-primary-light: #E1EDF3;
+
+    --color-raha-background: #EEF3F8;
+    --color-raha-surface: #FFFFFF;
+
+    --color-raha-text: #263746;
+    --color-raha-text-muted: #81909D;
+
+    --color-raha-border: #DFE7ED;
+
+
+    /* Typography */
+
+    --font-sans: "Vazirmatn", Tahoma, sans-serif;
+
+
+    /* Border Radius */
+
+    --radius-raha-sm: 8px;
+    --radius-raha-md: 12px;
+    --radius-raha-lg: 18px;
+    --radius-raha-xl: 24px;
+
+
+    /* Shadows */
+
+    --shadow-raha-sm: 0 2px 8px rgba(38, 55, 70, 0.04);
+    --shadow-raha-md: 0 8px 24px rgba(38, 55, 70, 0.06);
+}
+
+/* =========================================
+   Base Styles
+========================================= */
+
+@layer base {
+
+    body {
+        font-family: var(--font-sans);
+        background-color: var(--color-raha-background);
+        color: var(--color-raha-text);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+}

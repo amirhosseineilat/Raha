@@ -1,18 +1,24 @@
-<footer class="site-footer">
+<footer class="mt-[50px] border-t border-raha-border bg-raha-background pt-10 md:mt-20 md:pt-[60px]">
 
-    <div class="container">
+    <div class="container mx-auto px-4">
 
-        <div class="row gy-5">
+        <!-- Footer Content -->
+        <div class="grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-8 lg:grid-cols-12">
 
             <!-- Brand -->
-            <div class="col-lg-4 col-md-6">
+            <div class="md:col-span-1 lg:col-span-4">
 
-                <a href="/" class="footer-brand">
-                    <span class="brand-icon">R</span>
-                    <span class="brand-name">رها</span>
+                <a href="/" class="mb-5 inline-flex items-center gap-2.5">
+                    <span class="flex h-[42px] w-[42px] items-center justify-center rounded-raha-md bg-raha-primary text-xl font-bold text-white">
+                        R
+                    </span>
+
+                    <span class="text-[22px] font-extrabold text-raha-primary-dark">
+                        رها
+                    </span>
                 </a>
 
-                <p class="footer-description">
+                <p class="mt-4 max-w-xs text-sm leading-8 text-raha-text-muted">
                     رها همراه توست تا احساساتت رو بهتر بشناسی،
                     استرست رو مدیریت کنی و بیشتر مراقب خودت باشی.
                 </p>
@@ -21,44 +27,108 @@
 
 
             <!-- Quick Links -->
-            <div class="col-lg-2 col-md-6">
+            <div class="lg:col-span-2">
 
-                <h5 class="footer-title">دسترسی سریع</h5>
+                <h5 class="mb-[22px] text-base font-bold text-raha-primary-dark">
+                    دسترسی سریع
+                </h5>
 
-                <ul class="footer-links">
-                    <li><a href="/">خانه</a></li>
-                    <li><a href="/#features">امکانات</a></li>
-                    <li><a href="/#how-it-works">نحوه استفاده</a></li>
-                    <li><a href="{% url 'about' %}">درباره ما</a></li>
+                <ul class="m-0 flex flex-col gap-[13px] p-0">
+
+                    <li>
+                        <a href="/" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            خانه
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#features" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            امکانات
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/#how-it-works" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            نحوه استفاده
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'about' %}" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            درباره ما
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>
 
 
             <!-- Services -->
-            <div class="col-lg-3 col-md-6">
+            <div class="lg:col-span-3">
 
-                <h5 class="footer-title">امکانات رها</h5>
+                <h5 class="mb-[22px] text-base font-bold text-raha-primary-dark">
+                    امکانات رها
+                </h5>
 
-                <ul class="footer-links">
-                    <li><a href="#">ثبت احساسات</a></li>
-                    <li><a href="#">تمرین تنفس</a></li>
-                    <li><a href="#">موسیقی آرامش‌بخش</a></li>
-                    <li><a href="#">محتوای آموزشی</a></li>
+                <ul class="m-0 flex flex-col gap-[13px] p-0">
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            ثبت احساسات
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            تمرین تنفس
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            موسیقی آرامش‌بخش
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            محتوای آموزشی
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>
 
 
             <!-- Contact -->
-            <div class="col-lg-3 col-md-6">
+            <div class="lg:col-span-3">
 
-                <h5 class="footer-title">ارتباط با ما</h5>
+                <h5 class="mb-[22px] text-base font-bold text-raha-primary-dark">
+                    ارتباط با ما
+                </h5>
 
-                <ul class="footer-links">
-                    <li><a href="#">تماس با ما</a></li>
-                    <li><a href="#">حریم خصوصی</a></li>
-                    <li><a href="#">قوانین استفاده</a></li>
+                <ul class="m-0 flex flex-col gap-[13px] p-0">
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            تماس با ما
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            حریم خصوصی
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-sm text-raha-text-muted transition-all hover:pr-[5px] hover:text-raha-primary">
+                            قوانین استفاده
+                        </a>
+                    </li>
+
                 </ul>
 
             </div>
@@ -67,13 +137,13 @@
 
 
         <!-- Copyright -->
-        <div class="footer-bottom">
+        <div class="mt-[35px] flex flex-col items-center gap-[15px] border-t border-raha-border py-6 text-center md:mt-[50px] md:flex-row md:flex-wrap md:justify-between md:text-right">
 
-            <p>
+            <p class="m-0 text-[13px] text-raha-text-muted">
                 © تمامی حقوق این وب‌سایت متعلق به رها است.
             </p>
 
-            <p>
+            <p class="m-0 text-[13px] text-raha-text-muted">
                 ساخته‌شده با ❤️ برای مراقبت بیشتر از خودت
             </p>
 

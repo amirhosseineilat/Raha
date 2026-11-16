@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser ,BaseUserManager
+from datetime import timedelta
+from django.utils import timezone
+from django.conf import settings
 
 class UserManager(BaseUserManager):
     def create_user(self,email, password=None, **extra_fields):
@@ -51,3 +54,24 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+class Otp(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="otps",
+    )
+
+    code_hash = models.CharField(max_length=128)
+    attempts = models.PositiveSmallIntegerField(default=0)
+    is_used = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def expire_at(self):
+        return self.created_at + timedelta(minutes=5)
+
+    @property
+    def is_expired(self):
+        return timezone.now() >= self.expire_at

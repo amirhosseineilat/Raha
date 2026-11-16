@@ -1,5 +1,9 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import (
+    UserCreationForm,
+    AuthenticationForm,
+    PasswordResetForm,
+)
 
 from .models import User
 
@@ -27,3 +31,6 @@ class UserLoginForm(AuthenticationForm):
             }
         ),
     )
+
+class UserResetPassword(PasswordResetForm):
+    pass

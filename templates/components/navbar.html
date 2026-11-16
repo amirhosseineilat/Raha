@@ -1,63 +1,58 @@
-<header class="site-header">
+<header class="sticky top-0 z-[1020] border-b border-raha-border bg-raha-background/95 backdrop-blur-xl">
 
-    <nav class="navbar raha-navbar">
-        <div class="container">
+    <nav class="py-3.5">
+        <div class="container mx-auto flex items-center justify-between px-4">
 
             <!-- Brand -->
-            <a href="/" class="navbar-brand">
-                <span class="brand-icon">R</span>
-                <span class="brand-name">رها</span>
+            <a href="/" class="flex items-center gap-2.5">
+                <span class="flex h-[42px] w-[42px] items-center justify-center rounded-raha-md bg-raha-primary text-xl font-bold text-white">
+                    R
+                </span>
+
+                <span class="text-[22px] font-extrabold text-raha-primary-dark">
+                    رها
+                </span>
             </a>
 
+
             <!-- Desktop Navigation -->
-            <div class="desktop-navigation d-none d-lg-flex">
+            <div class="hidden lg:flex lg:items-center lg:gap-3">
 
-                <ul class="navbar-nav flex-row align-items-center gap-3">
+                <a href="/" class="px-3 py-2.5 text-sm font-medium text-raha-primary transition-colors hover:text-raha-primary-dark">
+                    خانه
+                </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">
-                            خانه
-                        </a>
-                    </li>
+                <a href="/#features" class="px-3 py-2.5 text-sm font-medium text-raha-text-muted transition-colors hover:text-raha-primary">
+                    امکانات
+                </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#features">
-                            امکانات
-                        </a>
-                    </li>
+                <a href="/#how-it-works" class="px-3 py-2.5 text-sm font-medium text-raha-text-muted transition-colors hover:text-raha-primary">
+                    چطور کار می‌کند؟
+                </a>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#how-it-works">
-                            چطور کار می‌کند؟
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}">
-                            درباره ما
-                        </a>
-                    </li>
-
-                </ul>
+                <a href="{% url 'about' %}" class="px-3 py-2.5 text-sm font-medium text-raha-text-muted transition-colors hover:text-raha-primary">
+                    درباره ما
+                </a>
 
             </div>
 
+
             <!-- Desktop Authentication -->
-            <div class="navbar-actions d-none d-lg-flex align-items-center gap-3">
+            <div class="hidden items-center gap-4 lg:flex">
 
                 {% if user.is_authenticated %}
 
-                    <a href="#" class="btn btn-primary">
+                    <a href="#" class="rounded-raha-md bg-raha-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-raha-primary-dark">
                         پنل کاربری
                     </a>
 
                 {% else %}
 
-                    <a href="#" class="login-link">
+                    <a href="#" class="text-sm font-semibold text-raha-primary-dark transition-colors hover:text-raha-primary">
                         ورود
                     </a>
 
-                    <a href="#" class="btn btn-primary">
+                    <a href="#" class="rounded-raha-md bg-raha-primary px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-raha-primary-dark">
                         ثبت‌نام
                     </a>
 
@@ -65,20 +60,19 @@
 
             </div>
 
+
             <!-- Mobile Menu Button -->
             <button
-                class="navbar-toggler d-lg-none"
+                id="mobileMenuButton"
                 type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#mobileMenu"
-                aria-controls="mobileMenu"
+                class="flex h-11 w-11 flex-col items-center justify-center gap-[5px] rounded-raha-md border border-raha-border transition-colors hover:bg-raha-primary-light lg:hidden"
                 aria-label="باز کردن منو"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
             >
-                <span class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
+                <span class="h-0.5 w-[22px] rounded-full bg-raha-primary-dark"></span>
+                <span class="h-0.5 w-[22px] rounded-full bg-raha-primary-dark"></span>
+                <span class="h-0.5 w-[22px] rounded-full bg-raha-primary-dark"></span>
             </button>
 
         </div>
@@ -87,96 +81,86 @@
 </header>
 
 
-<!-- Mobile Offcanvas -->
+<!-- Mobile Menu Overlay -->
 <div
-    class="offcanvas offcanvas-end raha-offcanvas"
-    tabindex="-1"
+    id="mobileMenuOverlay"
+    class="fixed inset-0 z-[1040] hidden bg-black/40 opacity-0 transition-opacity duration-300"
+></div>
+
+
+<!-- Mobile Menu -->
+<aside
     id="mobileMenu"
-    aria-labelledby="mobileMenuLabel"
+    class="fixed right-0 top-0 z-[1050] flex h-dvh w-[min(85%,360px)] translate-x-full flex-col border-l border-raha-border bg-raha-background transition-transform duration-300 ease-in-out"
+    aria-hidden="true"
 >
 
-    <!-- Offcanvas Header -->
-    <div class="offcanvas-header">
+    <!-- Mobile Header -->
+    <div class="flex items-center justify-between border-b border-raha-border p-6">
 
-        <a href="/" class="navbar-brand" id="mobileMenuLabel">
-            <span class="brand-icon">R</span>
-            <span class="brand-name">رها</span>
+        <a href="/" class="flex items-center gap-2.5">
+            <span class="flex h-[42px] w-[42px] items-center justify-center rounded-raha-md bg-raha-primary text-xl font-bold text-white">
+                R
+            </span>
+
+            <span class="text-[22px] font-extrabold text-raha-primary-dark">
+                رها
+            </span>
         </a>
 
         <button
+            id="mobileMenuClose"
             type="button"
-            class="btn-close"
-            data-bs-dismiss="offcanvas"
+            class="flex h-9 w-9 items-center justify-center rounded-raha-md text-2xl text-raha-text-muted transition-colors hover:bg-raha-primary-light hover:text-raha-primary"
             aria-label="بستن منو"
-        ></button>
+        >
+            &times;
+        </button>
 
     </div>
 
 
-    <!-- Offcanvas Body -->
-    <div class="offcanvas-body">
+    <!-- Mobile Body -->
+    <div class="flex flex-1 flex-col overflow-y-auto p-6">
 
-        <ul class="navbar-nav mobile-navigation">
+        <!-- Navigation Links -->
+        <nav class="flex flex-col gap-2">
 
-            <li class="nav-item">
-                <a
-                    class="nav-link active"
-                    href="/"
-                    data-bs-dismiss="offcanvas"
-                >
-                    خانه
-                </a>
-            </li>
+            <a href="/" class="rounded-raha-md bg-raha-primary-light px-4 py-3.5 font-medium text-raha-primary">
+                خانه
+            </a>
 
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="/#features"
-                    data-bs-dismiss="offcanvas"
-                >
-                    امکانات
-                </a>
-            </li>
+            <a href="/#features" class="rounded-raha-md px-4 py-3.5 font-medium text-raha-text transition-colors hover:bg-raha-primary-light hover:text-raha-primary">
+                امکانات
+            </a>
 
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="/#how-it-works"
-                    data-bs-dismiss="offcanvas"
-                >
-                    چطور کار می‌کند؟
-                </a>
-            </li>
+            <a href="/#how-it-works" class="rounded-raha-md px-4 py-3.5 font-medium text-raha-text transition-colors hover:bg-raha-primary-light hover:text-raha-primary">
+                چطور کار می‌کند؟
+            </a>
 
-            <li class="nav-item">
-                <a
-                    class="nav-link"
-                    href="{% url 'about' %}"
-                    data-bs-dismiss="offcanvas"
-                >
-                    درباره ما
-                </a>
-            </li>
+            <a href="{% url 'about' %}" class="rounded-raha-md px-4 py-3.5 font-medium text-raha-text transition-colors hover:bg-raha-primary-light hover:text-raha-primary">
+                درباره ما
+            </a>
 
-        </ul>
+        </nav>
 
 
         <!-- Mobile Authentication -->
-        <div class="mobile-auth">
+        <div class="mt-8 flex flex-col gap-5 border-t border-raha-border pt-6">
 
             {% if user.is_authenticated %}
 
-                <a href="#" class="btn btn-primary w-100">
+                <a href="#" class="w-full rounded-raha-md bg-raha-primary px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-raha-primary-dark">
                     پنل کاربری
                 </a>
 
             {% else %}
 
-                <a href="#" class="login-link">
+                <a href="#" class="text-center text-sm font-semibold text-raha-primary-dark">
                     ورود
                 </a>
 
-                <a href="#" class="btn btn-primary w-100">
+                <a href="#" class="w-full rounded-raha-md bg-raha-primary px-5 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-raha-primary-dark">
                     ثبت‌نام
                 </a>
 
@@ -186,4 +170,4 @@
 
     </div>
 
-</div>
+</aside>

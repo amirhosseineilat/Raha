@@ -128,4 +128,7 @@ class UserLogoutView(LogoutView):
 
 class UserResetPassword(PasswordResetView):
     form_class = PasswordResetForm
-    domain_override = "127.0.0.1:8000"
+    template_name = "accounts/password_reset.html"
+    success_url = reverse_lazy("password_reset_done")
+    email_template_name = "accounts/emails/password_reset_email.html"
+    subject_template_name = "accounts/emails/password_reset_subject.txt"

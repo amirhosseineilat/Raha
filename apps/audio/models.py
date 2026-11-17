@@ -43,7 +43,7 @@ class AudioSession(models.Model):
         AudioContent, on_delete=models.PROTECT, related_name="audio_sessions"
     )
 
-    started_at = models.DateTimeField()
+    started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(null=True, blank=True)
     last_position = models.PositiveIntegerField(default=0)
 
@@ -60,15 +60,19 @@ class AudioSession(models.Model):
 
         constraints = [
             models.CheckConstraint(
-                condition=(Q(status__in=["playing", "paused"], ended_at__isnull=True))
-                | Q(
-                    status__in=["completed", "stopped", "interrupted"],
-                    ended_at__isnull=False,
-                )
-                & Q(ended_at__gte=F("started_at")),
+                condition=(
+                    Q(
+                        status__in=["playing", "paused"],
+                        ended_at__isnull=True,
+                    )
+                    | (
+                        Q(
+                            status__in=["completed", "stopped", "interrupted"],
+                            ended_at__isnull=False,
+                        )
+                        & Q(ended_at__gte=F("started_at"))
+                    )
+                ),
                 name="audio_session_valid_status_and_time",
-            ),
-            models.CheckConstraint(
-                condition=Q(last_position__gte=0), name="audio_last_position_gte_0"
             ),
         ]

@@ -54,32 +54,22 @@ class OTPVerifyView(FormView):
         with transaction.atomic():
 
             otp = (
-                Otp.objects
-                .select_for_update()
+                Otp.objects.select_for_update()
                 .filter(user=user, is_used=False)
                 .order_by("-created_at")
                 .first()
             )
 
             if otp is None:
-                form.add_error(
-                    "otp",
-                    "کد تأییدی برای این حساب پیدا نشد."
-                )
+                form.add_error("otp", "کد تأییدی برای این حساب پیدا نشد.")
                 return self.form_invalid(form)
 
             if otp.is_expired:
-                form.add_error(
-                    "otp",
-                    "کد تأیید منقضی شده است."
-                )
+                form.add_error("otp", "کد تأیید منقضی شده است.")
                 return self.form_invalid(form)
 
             if otp.attempts >= 5:
-                form.add_error(
-                    "otp",
-                    "تعداد تلاش‌های مجاز به پایان رسیده است."
-                )
+                form.add_error("otp", "تعداد تلاش‌های مجاز به پایان رسیده است.")
                 return self.form_invalid(form)
 
             if not check_password(user_input, otp.code_hash):
@@ -89,20 +79,12 @@ class OTPVerifyView(FormView):
                 if otp.attempts >= 5:
                     otp.is_used = True
 
-                otp.save(
-                    update_fields=["attempts", "is_used"]
-                )
+                otp.save(update_fields=["attempts", "is_used"])
 
                 if otp.is_used:
-                    form.add_error(
-                        "otp",
-                        "تعداد تلاش‌های مجاز به پایان رسیده است."
-                    )
+                    form.add_error("otp", "تعداد تلاش‌های مجاز به پایان رسیده است.")
                 else:
-                    form.add_error(
-                        "otp",
-                        "کد وارد شده صحیح نیست."
-                    )
+                    form.add_error("otp", "کد وارد شده صحیح نیست.")
 
                 return self.form_invalid(form)
 

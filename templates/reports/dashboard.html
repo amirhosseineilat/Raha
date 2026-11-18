@@ -1,32 +1,28 @@
-{% extends "base.html" %}
-{% block title %}گزارش من | رها{% endblock %}
+{% extends "app_base.html" %}
+{% block title %}داشبورد و گزارش‌ها | رها{% endblock %}
 {% block content %}
-<section class="mx-auto max-w-6xl px-4 py-12">
-  <p class="font-bold text-raha-primary">نگاهی به مسیرت</p><h1 class="mt-2 text-3xl font-extrabold text-raha-primary-dark">گزارش مراقبت از خود</h1><p class="mt-3 text-raha-text-muted">مروری بر فعالیت‌ها و حال‌وهوای تو در بازه انتخابی.</p>
-  <form method="get" class="mt-6 flex flex-wrap items-center gap-3"><label for="period" class="text-sm font-semibold">بازه گزارش:</label><select id="period" name="period" class="max-w-48 rounded-xl border border-raha-border bg-white px-4 py-2"><option value="7" {% if period == 7 %}selected{% endif %}>۷ روز اخیر</option><option value="30" {% if period == 30 %}selected{% endif %}>۳۰ روز اخیر</option><option value="90" {% if period == 90 %}selected{% endif %}>۹۰ روز اخیر</option></select><button class="rounded-xl bg-raha-primary px-4 py-2 font-bold text-white">اعمال</button></form>
-  <h2 class="mt-10 text-xl font-extrabold text-raha-primary-dark">حال‌وهوای روزانه</h2>
-  <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">تعداد ثبت حال</p><strong class="mt-2 block text-3xl text-raha-primary">{{ mood_report.total_entries|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">میانگین حال</p><strong class="mt-2 block text-3xl text-raha-primary">{{ mood_report.average_mood|default:"—"|floatformat:1 }}</strong><span class="text-xs text-raha-text-muted">از ۵</span></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">میانگین استرس</p><strong class="mt-2 block text-3xl text-raha-primary">{{ mood_report.average_stress|default:"—"|floatformat:1 }}</strong><span class="text-xs text-raha-text-muted">از ۵</span></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">کیفیت خواب</p><strong class="mt-2 block text-3xl text-raha-primary">{{ mood_report.average_sleep|default:"—"|floatformat:1 }}</strong><span class="text-xs text-raha-text-muted">از ۵</span></div>
-  </div>
-  <h2 class="mt-10 text-xl font-extrabold text-raha-primary-dark">تمرین‌های تنفس</h2>
-  <div class="mt-4 grid gap-4 sm:grid-cols-3">
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">کل جلسات</p><strong class="mt-2 block text-3xl text-raha-primary">{{ breathing_report.total_sessions|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">جلسات کامل‌شده</p><strong class="mt-2 block text-3xl text-raha-primary">{{ breathing_report.completed_sessions|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">مجموع زمان تمرین</p><strong class="mt-2 block text-3xl text-raha-primary">{{ breathing_report.total_duration|default:0 }}</strong><span class="text-xs text-raha-text-muted">ثانیه</span></div>
-  </div>
-  <h2 class="mt-10 text-xl font-extrabold text-raha-primary-dark">فعالیت‌های صوتی</h2>
-  <div class="mt-4 grid gap-4 sm:grid-cols-2">
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">کل جلسات صوتی</p><strong class="mt-2 block text-3xl text-raha-primary">{{ audio_report.total_sessions|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">جلسات کامل‌شده</p><strong class="mt-2 block text-3xl text-raha-primary">{{ audio_report.completed_sessions|default:0 }}</strong></div>
-  </div>
-  <h2 class="mt-10 text-xl font-extrabold text-raha-primary-dark">بازی‌ها</h2>
-  <div class="mt-4 grid gap-4 sm:grid-cols-3">
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">کل جلسات بازی</p><strong class="mt-2 block text-3xl text-raha-primary">{{ game_report.total_sessions|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">بازی‌های کامل‌شده</p><strong class="mt-2 block text-3xl text-raha-primary">{{ game_report.completed_sessions|default:0 }}</strong></div>
-    <div class="rounded-2xl border border-raha-border bg-white p-5"><p class="text-sm text-raha-text-muted">مجموع زمان بازی</p><strong class="mt-2 block text-3xl text-raha-primary">{{ game_report.total_duration|default:"—" }}</strong></div>
-  </div>
+<div class="mb-7 flex flex-wrap items-end justify-between gap-4">
+  <div><p class="app-eyebrow">فضای شخصی تو</p><h1 class="app-page-title mt-2">سلام، {{ user.first_name|default:"دوست من" }} 🌿</h1><p class="mt-2 text-sm app-muted">نگاهی آرام به قدم‌هایی که برای مراقبت از خودت برداشتی.</p></div>
+  <form method="get" class="flex items-center gap-2"><label for="period" class="text-xs font-bold text-[#71818e]">بازه:</label><select id="period" name="period" class="app-field !w-auto !py-2 text-xs"><option value="7" {% if period == 7 %}selected{% endif %}>۷ روز اخیر</option><option value="30" {% if period == 30 %}selected{% endif %}>۳۰ روز اخیر</option><option value="90" {% if period == 90 %}selected{% endif %}>۹۰ روز اخیر</option></select><button class="app-button !py-2">اعمال</button></form>
+</div>
+<section class="mb-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+  <article class="app-card p-5"><div class="flex items-center justify-between"><span class="text-xs font-semibold app-muted">ثبت حال‌و‌هوا</span><span class="grid h-9 w-9 place-items-center rounded-xl bg-[#edf5f7] text-[#39788d]">◷</span></div><strong class="mt-4 block text-3xl font-extrabold text-[#344957]">{{ mood_report.total_entries|default:0 }}</strong><span class="text-[11px] app-muted">بار در این بازه</span></article>
+  <article class="app-card p-5"><div class="flex items-center justify-between"><span class="text-xs font-semibold app-muted">میانگین حال</span><span class="grid h-9 w-9 place-items-center rounded-xl bg-[#edf5f7] text-[#39788d]">☼</span></div><strong class="mt-4 block text-3xl font-extrabold text-[#344957]">{{ mood_report.average_mood|default:"—"|floatformat:1 }}<small class="mr-1 text-sm font-medium app-muted">/ ۵</small></strong><span class="text-[11px] app-muted">بر اساس ثبت‌های تو</span></article>
+  <article class="app-card p-5"><div class="flex items-center justify-between"><span class="text-xs font-semibold app-muted">تمرین تنفس</span><span class="grid h-9 w-9 place-items-center rounded-xl bg-[#edf5f7] text-[#39788d]">◎</span></div><strong class="mt-4 block text-3xl font-extrabold text-[#344957]">{{ breathing_report.total_sessions|default:0 }}</strong><span class="text-[11px] app-muted">جلسه در این بازه</span></article>
+  <article class="app-card p-5"><div class="flex items-center justify-between"><span class="text-xs font-semibold app-muted">جلسات آرامش‌بخش</span><span class="grid h-9 w-9 place-items-center rounded-xl bg-[#edf5f7] text-[#39788d]">♫</span></div><strong class="mt-4 block text-3xl font-extrabold text-[#344957]">{{ audio_report.total_sessions|default:0 }}</strong><span class="text-[11px] app-muted">جلسه صوتی</span></article>
 </section>
+<div class="grid gap-5 xl:grid-cols-2">
+  <section class="app-card p-5 sm:p-6"><div class="flex items-center justify-between gap-3"><div><p class="app-eyebrow">شناخت احساسات</p><h2 class="mt-1 text-lg font-extrabold text-[#344957]">نگاهی به حال‌وهوایت</h2></div><a class="text-xs font-bold text-[#39788d]" href="{% url 'mood_list' %}">دفترچه حال ←</a></div>
+    <div class="mt-5 grid grid-cols-2 gap-3">
+      <div class="rounded-xl bg-[#f5f8fa] p-4"><span class="text-xs app-muted">میانگین استرس</span><strong class="mt-2 block text-2xl font-extrabold text-[#486d7c]">{{ mood_report.average_stress|default:"—"|floatformat:1 }}<small class="mr-1 text-xs">/۵</small></strong></div>
+      <div class="rounded-xl bg-[#f5f8fa] p-4"><span class="text-xs app-muted">کیفیت خواب</span><strong class="mt-2 block text-2xl font-extrabold text-[#486d7c]">{{ mood_report.average_sleep|default:"—"|floatformat:1 }}<small class="mr-1 text-xs">/۵</small></strong></div>
+    </div><a href="{% url 'mood_create' %}" class="app-button mt-5">+ ثبت حال امروز</a>
+  </section>
+  <section class="app-card p-5 sm:p-6"><div class="flex items-center justify-between gap-3"><div><p class="app-eyebrow">مکث و تنفس</p><h2 class="mt-1 text-lg font-extrabold text-[#344957]">تمرین‌های تو</h2></div><a class="text-xs font-bold text-[#39788d]" href="{% url 'breathing_exercises' %}">رفتن به تمرین‌ها ←</a></div>
+    <div class="mt-5 grid grid-cols-2 gap-3"><div class="rounded-xl bg-[#f5f8fa] p-4"><span class="text-xs app-muted">جلسات کامل‌شده</span><strong class="mt-2 block text-2xl font-extrabold text-[#486d7c]">{{ breathing_report.completed_sessions|default:0 }}</strong></div><div class="rounded-xl bg-[#f5f8fa] p-4"><span class="text-xs app-muted">زمان تمرین</span><strong class="mt-2 block text-2xl font-extrabold text-[#486d7c]">{{ breathing_report.total_duration|default:0 }}<small class="mr-1 text-xs">ثانیه</small></strong></div></div>
+    <p class="mt-4 text-xs app-muted">هر مکث کوتاه، فرصتی برای برگشتن به خودته.</p>
+  </section>
+  <section class="app-card p-5 sm:p-6"><p class="app-eyebrow">لحظه‌های شنیدنی</p><h2 class="mt-1 text-lg font-extrabold text-[#344957]">صداهای آرامش‌بخش</h2><div class="mt-4 flex items-center justify-between rounded-xl bg-[#f3f7f9] p-4"><div><p class="text-sm font-bold text-[#526775]">کمی به خودت زمان بده</p><p class="mt-1 text-xs app-muted">یک صدای آرام انتخاب کن و استراحت کن.</p></div><a href="{% url 'audio-content' %}" class="app-button-secondary">شنیدن صداها</a></div></section>
+  <section class="app-card p-5 sm:p-6"><p class="app-eyebrow">بازی و یادگیری</p><h2 class="mt-1 text-lg font-extrabold text-[#344957]">ذهن‌ات را تازه کن</h2><div class="mt-4 grid grid-cols-2 gap-3"><a href="{% url 'game_list' %}" class="rounded-xl bg-[#f3f7f9] p-4 text-sm font-bold text-[#526775]">بازی‌های ذهن‌آگاه <span class="float-left">←</span></a><a href="{% url 'article_list' %}" class="rounded-xl bg-[#f3f7f9] p-4 text-sm font-bold text-[#526775]">مطالعه و آگاهی <span class="float-left">←</span></a></div></section>
+</div>
 {% endblock %}

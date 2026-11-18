@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}دسته‌بندی صداها | رها{% endblock %}
+{% block content %}
+<section class="mx-auto max-w-6xl px-4 py-12"><div class="mb-8"><p class="text-sm font-bold text-raha-primary">کتابخانه صوتی</p><h1 class="mt-2 text-3xl font-extrabold text-raha-primary-dark">چه حال‌وهوایی رو انتخاب می‌کنی؟</h1><p class="mt-3 text-raha-text-muted">دسته‌ای متناسب با لحظه‌ای که در اون هستی انتخاب کن.</p></div>
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{% for category in audio_category %}<a href="{% url 'audio-content' %}?category={{ category.name|urlencode }}" class="group rounded-2xl border border-raha-border bg-white p-6 transition hover:-translate-y-1 hover:border-raha-primary hover:shadow-lg"><span class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-raha-primary-light text-2xl">🎧</span><h2 class="font-bold text-raha-primary-dark group-hover:text-raha-primary">{{ category.name }}</h2><p class="mt-2 text-sm text-raha-text-muted">مشاهده صداهای این دسته</p></a>{% empty %}<p class="col-span-full rounded-2xl bg-white p-8 text-center text-raha-text-muted">هنوز دسته‌بندی صوتی‌ای اضافه نشده.</p>{% endfor %}</div></section>
+{% endblock %}

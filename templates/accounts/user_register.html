@@ -1,109 +1,11 @@
 {% extends "base.html" %}
-{% load static %}
-
 {% block title %}ثبت‌نام | رها{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/pages/auth.css' %}">
-{% endblock %}
-
 {% block content %}
-
-<div class="auth-page">
-
-    <div class="container">
-        <div class="auth-wrapper">
-
-            <!-- Form Section -->
-            <div class="auth-form-section">
-
-                <a href="{% url 'landing' %}" class="auth-brand">
-                    <span class="brand-icon">R</span>
-                    <span class="brand-name">رها</span>
-                </a>
-
-                <div class="auth-heading">
-                    <h1>به رها خوش اومدی!</h1>
-                    <p>
-                        برای شروع مسیر مراقبت از خودت،
-                        حساب کاربری بساز.
-                    </p>
-                </div>
-
-                <form method="post" class="auth-form">
-
-                    {% csrf_token %}
-
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {{ form.non_field_errors }}
-                        </div>
-                    {% endif %}
-
-                    {% for field in form %}
-
-                        <div class="auth-form-group">
-
-                            <label for="{{ field.id_for_label }}">
-                                {{ field.label }}
-                            </label>
-
-                            {{ field }}
-
-                            {% if field.help_text %}
-                                <div class="form-help">
-                                    {{ field.help_text|safe }}
-                                </div>
-                            {% endif %}
-
-                            {% for error in field.errors %}
-                                <div class="field-error">
-                                    {{ error }}
-                                </div>
-                            {% endfor %}
-
-                        </div>
-
-                    {% endfor %}
-
-                    <button type="submit" class="btn btn-primary w-100">
-                        ساخت حساب کاربری
-                    </button>
-
-                </form>
-
-                <div class="auth-footer">
-                    قبلاً ثبت‌نام کردی؟
-                    <a href="{% url 'login' %}">وارد شو</a>
-                </div>
-
-            </div>
-
-
-            <!-- Visual Section -->
-            <div class="auth-visual-section">
-
-                <div class="auth-visual-content">
-
-                    <div class="auth-visual-icon">♡</div>
-
-                    <h2>
-                        مراقبت از خودت
-                        از همین‌جا شروع می‌شه.
-                    </h2>
-
-                    <p>
-                        رها همراه توست تا احساساتت رو بهتر بشناسی،
-                        آرامش بیشتری پیدا کنی و برای خودت وقت بذاری.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
+<section class="mx-auto max-w-xl px-4 py-16">
+  <div class="rounded-3xl border border-raha-border bg-white p-6 shadow-sm sm:p-10">
+    <div class="mb-8 text-center"><span class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-raha-primary-light text-2xl">🌱</span><h1 class="text-2xl font-extrabold text-raha-primary-dark">به رها خوش اومدی</h1><p class="mt-2 text-sm leading-7 text-raha-text-muted">حساب کاربری بساز تا مسیر مراقبت از خودت رو شروع کنی.</p></div>
+    <form method="post" class="space-y-5">{% csrf_token %}{% include "components/form_fields.html" %}<button class="w-full rounded-xl bg-raha-primary px-5 py-3.5 font-bold text-white transition hover:bg-raha-primary-dark">ساخت حساب و دریافت کد تأیید</button></form>
+    <p class="mt-6 text-center text-sm text-raha-text-muted">قبلاً ثبت‌نام کردی؟ <a class="font-bold text-raha-primary hover:underline" href="{% url 'login' %}">وارد شو</a></p>
+  </div>
+</section>
 {% endblock %}

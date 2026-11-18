@@ -16,13 +16,21 @@ class PanicGuide(models.Model):
     )
 
     def __str__(self):
-        return self.context
+        return self.context[:50]
 
 
 class PanicGuideCategories(models.Model):
-    panic_category = models.ForeignKey(PanicCategory, on_delete=models.PROTECT)
+    panic_category = models.ForeignKey(
+        PanicCategory,
+        on_delete=models.PROTECT,
+        related_name="guide_relationships",
+    )
 
-    panic_guide = models.ForeignKey(PanicGuide, on_delete=models.CASCADE)
+    panic_guide = models.ForeignKey(
+        PanicGuide,
+        on_delete=models.CASCADE,
+        related_name="category_relationships",
+    )
 
     class Meta:
         constraints = [

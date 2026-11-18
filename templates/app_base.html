@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EEF3F8">
+  <title>{% block title %}رها | همراه تو{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/dist/tailwind.css' %}">
+  <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app-shell.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body class="app-shell">
+  {% include "components/app_sidebar.html" %}
+  <div class="app-main">
+    {% include "components/app_header.html" %}
+    {% if messages %}<div class="app-content !pb-0 space-y-2">{% for message in messages %}<div class="app-card px-4 py-3 text-sm" role="status">{{ message }}</div>{% endfor %}</div>{% endif %}
+    <main class="app-content" id="main-content">{% block content %}{% endblock %}</main>
+  </div>
+  <div id="appSidebarBackdrop" class="fixed inset-0 z-30 hidden bg-slate-900/30 lg:hidden"></div>
+  <script>
+  (() => {
+    const sidebar = document.getElementById("appSidebar");
+    const toggle = document.getElementById("appMenuToggle");
+    const backdrop = document.getElementById("appSidebarBackdrop");
+    const close = () => { sidebar?.classList.remove("is-open"); backdrop?.classList.add("hidden"); toggle?.setAttribute("aria-expanded","false"); };
+    toggle?.addEventListener("click", () => { const open = sidebar.classList.toggle("is-open"); backdrop?.classList.toggle("hidden", !open); toggle.setAttribute("aria-expanded", String(open)); });
+    backdrop?.addEventListener("click", close);
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape") close(); });
+  })();
+  </script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

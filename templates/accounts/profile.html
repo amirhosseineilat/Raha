@@ -1,0 +1,56 @@
+{% extends "app_base.html" %}
+{% block title %}پروفایل و تنظیمات | رها{% endblock %}
+{% block content %}
+<div class="mx-auto max-w-4xl">
+  <div class="mb-7">
+    <p class="app-eyebrow">حساب کاربری</p>
+    <h1 class="app-page-title mt-2">حساب تو، فضای شخصی تو.</h1>
+    <p class="mt-2 text-sm app-muted">اطلاعاتت رو مدیریت کن و رها رو با نیازهای خودت هماهنگ کن.</p>
+  </div>
+
+  <section class="app-card p-5 sm:p-7">
+    <div class="mb-6 flex items-center gap-3 border-b border-[#edf1f4] pb-5">
+      <div class="grid h-12 w-12 place-items-center rounded-2xl bg-[#e6f0f4] text-lg font-extrabold text-[#39788d]">{{ user.first_name|default:user.email|first|upper }}</div>
+      <div><h2 class="font-extrabold text-[#344957]">اطلاعات پروفایل</h2><p class="text-xs app-muted">این اطلاعات فقط برای حساب خودت استفاده می‌شن.</p></div>
+    </div>
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+      {% if form.non_field_errors %}<div class="rounded-xl bg-red-50 p-3 text-sm text-red-700">{{ form.non_field_errors }}</div>{% endif %}
+      <div class="grid gap-4 sm:grid-cols-2">
+        {% for field in form %}
+        <div class="{% if field.name == 'email' %}sm:col-span-2{% endif %}">
+          <label class="app-field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+          <input class="app-field" type="{{ field.field.widget.input_type|default:'text' }}" name="{{ field.html_name }}" id="{{ field.id_for_label }}" value="{{ field.value|default_if_none:'' }}" {% if field.field.required %}required{% endif %} {% if field.name == 'email' %}dir="ltr"{% endif %} autocomplete="{{ field.field.widget.attrs.autocomplete|default:'off' }}">
+          {% for error in field.errors %}<p class="app-error">{{ error }}</p>{% endfor %}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="flex flex-wrap items-center justify-between gap-3 border-t border-[#edf1f4] pt-5">
+        <p class="text-xs app-muted">هر زمان خواستی می‌تونی این اطلاعات رو تغییر بدی.</p>
+        <button class="app-button" type="submit">ذخیره تغییرات</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="app-card mt-5 p-5 sm:p-7">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-[#edf4f7] text-[#39788d]">◉</span><div><h2 class="font-extrabold text-[#344957]">یادآوری‌ها و اعلان‌ها</h2><p class="mt-1 text-xs app-muted">زمان و نوع یادآوری‌های رها رو تنظیم کن.</p></div></div>
+      <a class="app-button-secondary" href="{% url 'notification_settings' %}">مدیریت اعلان‌ها</a>
+    </div>
+    <div class="mt-4 flex flex-wrap gap-2 text-xs text-[#71818e]"><a class="rounded-full bg-[#f3f7f9] px-3 py-2" href="{% url 'notification_preferences' %}">زمان‌بندی یادآوری‌ها</a><a class="rounded-full bg-[#f3f7f9] px-3 py-2" href="{% url 'notification_history' %}">تاریخچه اعلان‌ها</a></div>
+  </section>
+
+  <section class="app-card mt-5 p-5 sm:p-7">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3"><span class="grid h-10 w-10 place-items-center rounded-xl bg-[#edf4f7] text-[#39788d]">⌑</span><div><h2 class="font-extrabold text-[#344957]">امنیت حساب</h2><p class="mt-1 text-xs app-muted">برای امنیت بیشتر، هر چند وقت یک‌بار رمزت رو به‌روزرسانی کن.</p></div></div>
+      <a class="app-button-secondary" href="{% url 'password_change' %}">تغییر رمز عبور</a>
+    </div>
+  </section>
+
+  <section class="mt-5 rounded-2xl border border-[#eadfdf] bg-white p-5 sm:p-6">
+    <h2 class="font-bold text-[#66585a]">می‌خوای از رها خارج بشی؟</h2>
+    <p class="mt-1 text-xs text-[#9a8d8e]">هر زمان برگردی، اطلاعاتت در حسابت باقی می‌مونه.</p>
+    <form method="post" action="{% url 'logout' %}" class="mt-4">{% csrf_token %}<button class="rounded-full border border-[#eadfdf] px-5 py-2 text-xs font-bold text-[#8b6f72] hover:bg-[#fbf6f6]">خروج از حساب</button></form>
+  </section>
+</div>
+{% endblock %}

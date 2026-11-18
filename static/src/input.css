@@ -1,32 +1,36 @@
 @import "tailwindcss";
 
-/* Tailwind scans Django templates and app code for utility classes. */
 @source "../../templates";
 @source "../../apps";
 
 @theme {
-  --color-raha-primary: #7652A5;
-  --color-raha-primary-dark: #35234A;
-  --color-raha-primary-light: #EFE7F8;
-  --color-raha-background: #FAF8FC;
+  --color-raha-primary: #39788D;
+  --color-raha-primary-dark: #28596B;
+  --color-raha-primary-light: #E1EDF3;
+  --color-raha-background: #EEF3F8;
   --color-raha-surface: #FFFFFF;
-  --color-raha-text: #35234A;
-  --color-raha-text-muted: #81768D;
-  --color-raha-border: #EAE4F0;
+  --color-raha-text: #263746;
+  --color-raha-text-muted: #81909D;
+  --color-raha-border: #DFE7ED;
   --font-sans: "Vazirmatn", Tahoma, sans-serif;
   --radius-raha-sm: 8px;
   --radius-raha-md: 12px;
   --radius-raha-lg: 18px;
   --radius-raha-xl: 24px;
-  --shadow-raha-sm: 0 2px 8px rgba(53, 35, 74, .04);
-  --shadow-raha-md: 0 8px 24px rgba(53, 35, 74, .06);
+  --shadow-raha-sm: 0 2px 8px rgba(38, 55, 70, .04);
+  --shadow-raha-md: 0 8px 24px rgba(38, 55, 70, .06);
 }
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     font-family: var(--font-sans);
-    background-color: var(--color-raha-background);
+    background: var(--color-raha-background);
     color: var(--color-raha-text);
+    line-height: 1.8;
   }
+  a { text-decoration: none; }
+  button, input, select, textarea { font: inherit; }
+  :focus-visible { outline: 3px solid rgb(57 120 141 / .28); outline-offset: 3px; }
 }

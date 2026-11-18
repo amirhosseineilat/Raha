@@ -1,0 +1,12 @@
+<header class="app-topbar">
+  <div class="flex min-w-0 items-center gap-3">
+    <button id="appMenuToggle" type="button" class="app-menu-toggle h-10 w-10 items-center justify-center rounded-xl border border-[#dfe7ed] bg-white text-[#39788d]" aria-label="باز کردن منو" aria-controls="appSidebar" aria-expanded="false">☰</button>
+    <label class="app-search hidden w-[min(36vw,360px)] items-center gap-2 rounded-full border border-[#e4ebf0] bg-[#f6f9fb] px-4 py-2.5 md:flex">
+      <span class="text-[#91a0aa]">⌕</span><input class="w-full bg-transparent text-xs outline-none placeholder:text-[#a5b0b8]" type="search" placeholder="جست‌وجو در رها..." aria-label="جست‌وجو">
+    </label>
+  </div>
+  <div class="flex items-center gap-3">
+    <span class="hidden text-xs text-[#94a2ac] sm:inline">خوش اومدی، {{ user.first_name|default:"دوست من" }}</span>
+    <a href="{% url 'profile' %}" class="flex h-9 w-9 items-center justify-center rounded-full border border-[#dce7ed] bg-white text-sm font-bold text-[#39788d]" aria-label="پروفایل">{{ user.first_name|default:user.email|first|upper }}</a>
+  </div>
+</header>

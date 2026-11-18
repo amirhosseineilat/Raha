@@ -1,0 +1,30 @@
+<aside id="appSidebar" class="app-sidebar" aria-label="ناوبری اصلی">
+  <a href="{% url 'landing' %}" class="flex items-center gap-3 px-3 pb-8">
+    <span class="grid h-10 w-10 place-items-center rounded-xl bg-[#39788D] text-lg font-black text-white">ر</span>
+    <span><strong class="block text-lg font-black tracking-tight text-[#263746]">رها<span class="text-[#39788D]">.</span></strong><small class="block text-[10px] text-[#91A0AA]">همراه تو برای آرامش</small></span>
+  </a>
+  <p class="px-3 pb-3 text-[10px] font-extrabold tracking-widest text-[#a0acb5]">فضای شخصی تو</p>
+  <nav class="flex flex-1 flex-col gap-1">
+    <a class="app-nav-link" href="{% url 'report_dashboard' %}"><span class="app-nav-icon">⌂</span>داشبورد</a>
+    <a class="app-nav-link" href="{% url 'mood_list' %}"><span class="app-nav-icon">◷</span>ردیابی حال</a>
+    <a class="app-nav-link" href="{% url 'breathing_exercises' %}"><span class="app-nav-icon">◉</span>تمرین تنفس</a>
+    <a class="app-nav-link" href="{% url 'audio-content' %}"><span class="app-nav-icon">♫</span>صداهای آرامش‌بخش</a>
+    <a class="app-nav-link" href="{% url 'article_list' %}"><span class="app-nav-icon">▤</span>یادگیری و آگاهی</a>
+    <a class="app-nav-link" href="{% url 'game_list' %}"><span class="app-nav-icon">◇</span>بازی‌های ذهن‌آگاه</a>
+    <a class="app-nav-link" href="{% url 'panic_guide_list' %}"><span class="app-nav-icon">♡</span>حمایت در لحظات سخت</a>
+    <a class="app-nav-link" href="{% url 'report_dashboard' %}"><span class="app-nav-icon">▥</span>گزارش‌ها</a>
+    <a class="app-nav-link" href="{% url 'profile' %}"><span class="app-nav-icon">⚙</span>تنظیمات و پروفایل</a>
+  </nav>
+  <div class="mt-5 rounded-2xl bg-[#eef5f8] p-4">
+    <p class="text-xs font-bold text-[#456d7c]">یک یادآوری کوچک</p>
+    <p class="mt-1 text-[11px] leading-6 text-[#7c929e]">لازم نیست هر روز عالی باشی؛ همین که به خودت توجه می‌کنی ارزشمنده.</p>
+  </div>
+  <div class="mt-4 border-t border-[#edf1f4] pt-4">
+    <a href="{% url 'profile' %}" class="flex items-center gap-3 rounded-xl p-2 hover:bg-[#f5f8fa]">
+      <span class="grid h-9 w-9 place-items-center rounded-full bg-[#dceaf0] text-sm font-bold text-[#39788d]">{{ user.first_name|default:user.email|first|upper }}</span>
+      <span class="min-w-0 flex-1"><strong class="block truncate text-xs text-[#3d5360]">{{ user.get_full_name|default:user.email }}</strong><small class="text-[10px] text-[#91a0aa]">حساب کاربری</small></span>
+      <span class="text-[#91a0aa]">‹</span>
+    </a>
+    <form method="post" action="{% url 'logout' %}" class="mt-2">{% csrf_token %}<button class="w-full rounded-xl px-3 py-2 text-right text-xs font-semibold text-[#84939d] hover:bg-[#f5f8fa]">خروج از حساب</button></form>
+  </div>
+</aside>

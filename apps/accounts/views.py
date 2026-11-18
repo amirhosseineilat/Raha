@@ -1,15 +1,19 @@
 from django.shortcuts import get_object_or_404, redirect
-from django.views.generic import CreateView, FormView
+from django.views.generic import CreateView, FormView, UpdateView
 from django.contrib.auth.views import (
     LoginView, LogoutView, PasswordResetView, PasswordResetDoneView,
-    PasswordResetConfirmView, PasswordResetCompleteView,
+    PasswordResetConfirmView, PasswordResetCompleteView, PasswordChangeView,
 )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import get_user_model
 from django.db import transaction
 
-from .forms import UserRegisterForm, UserLoginForm, PasswordResetForm, OTPVerifyForm
+from .forms import (
+    UserRegisterForm, UserLoginForm, UserResetPassword,
+    OTPVerifyForm, UserProfileForm,
+)
 from .services import send_otp_email
 from .models import Otp
 
@@ -38,10 +42,8 @@ class OTPVerifyView(FormView):
         user_id = self.request.session.get("pending_user_id")
         if not user_id:
             return redirect("landing")
-
         user = get_object_or_404(User, pk=user_id, is_active=False)
         user_input = form.cleaned_data["otp"]
-
         with transaction.atomic():
             otp = (
                 Otp.objects.select_for_update()
@@ -63,14 +65,16 @@ class OTPVerifyView(FormView):
                 if otp.attempts >= 5:
                     otp.is_used = True
                 otp.save(update_fields=["attempts", "is_used"])
-                form.add_error("otp", "تعداد تلاش‌های مجاز به پایان رسیده است." if otp.is_used else "کد وارد شده صحیح نیست.")
+                form.add_error(
+                    "otp",
+                    "تعداد تلاش‌های مجاز به پایان رسیده است."
+                    if otp.is_used else "کد وارد شده صحیح نیست.",
+                )
                 return self.form_invalid(form)
-
             otp.is_used = True
             otp.save(update_fields=["is_used"])
             user.is_active = True
             user.save(update_fields=["is_active"])
-
         self.request.session.pop("pending_user_id", None)
         return super().form_valid(form)
 
@@ -84,8 +88,23 @@ class UserLogoutView(LogoutView):
     next_page = reverse_lazy("landing")
 
 
+class UserProfileView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserProfileForm
+    template_name = "accounts/profile.html"
+    success_url = reverse_lazy("profile")
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class RahaPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
+    template_name = "accounts/password_change.html"
+    success_url = reverse_lazy("profile")
+
+
 class UserResetPassword(PasswordResetView):
-    form_class = PasswordResetForm
+    form_class = UserResetPassword
     template_name = "accounts/password_reset.html"
     success_url = reverse_lazy("password_reset_done")
     email_template_name = "accounts/emails/password_reset_email.html"

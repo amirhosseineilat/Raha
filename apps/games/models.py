@@ -1,3 +1,4 @@
+
 from django.db import models
 from django.db.models import Q, F
 from django.conf import settings
@@ -14,6 +15,7 @@ class GameCategory(models.Model):
 
 
 class Game(models.Model):
+
     class GameType(models.TextChoices):
         INTERNAL = "internal", "Internal"
         EXTERNAL = "external", "External"
@@ -25,15 +27,20 @@ class Game(models.Model):
     thumbnail = models.URLField(blank=True)
 
     game_type = models.CharField(
-        max_length=50, choices=GameType.choices, default=GameType.INTERNAL
+        max_length=50,
+        choices=GameType.choices,
+        default=GameType.INTERNAL,
     )
+
     game_url = models.URLField(blank=True)
 
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     game_categories = models.ManyToManyField(
-        GameCategory, through="GameCategoryRelation", related_name="games"
+        GameCategory,
+        through="GameCategoryRelation",
+        related_name="games",
     )
 
     def __str__(self):
@@ -52,23 +59,33 @@ class Game(models.Model):
 
 
 class GameCategoryRelation(models.Model):
+
     game = models.ForeignKey(
-        Game, on_delete=models.CASCADE, related_name="game_category_relations"
+        Game,
+        on_delete=models.CASCADE,
+        related_name="game_category_relations",
     )
 
     game_category = models.ForeignKey(
-        GameCategory, on_delete=models.CASCADE, related_name="game_relations"
+        GameCategory,
+        on_delete=models.CASCADE,
+        related_name="game_relations",
     )
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['game','game_category'],
-                name='unique_game_category'
+                fields=["game", "game_category"],
+                name="unique_game_category",
             )
         ]
 
+    def __str__(self):
+        return f"{self.game.name} - {self.game_category.name}"
+
+
 class GameSession(models.Model):
+
     class Status(models.TextChoices):
         IN_PROGRESS = "in_progress", "In Progress"
         COMPLETED = "completed", "Completed"
@@ -76,26 +93,34 @@ class GameSession(models.Model):
         INTERRUPTED = "interrupted", "Interrupted"
 
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="game_sessions"
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="game_sessions",
     )
 
     game = models.ForeignKey(
-        Game, on_delete=models.PROTECT, related_name="game_sessions"
+        Game,
+        on_delete=models.PROTECT,
+        related_name="game_sessions",
     )
 
-    started_at = models.DateTimeField()
+    started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(blank=True, null=True)
 
     status = models.CharField(
-        max_length=50, choices=Status.choices, default=Status.IN_PROGRESS
+        max_length=50,
+        choices=Status.choices,
+        default=Status.IN_PROGRESS,
     )
 
     class Meta:
         indexes = [
             models.Index(
-                fields=["user", "started_at"], name="started_at_game_session_idx"
+                fields=["user", "started_at"],
+                name="started_at_game_session_idx",
             )
         ]
+
         constraints = [
             models.CheckConstraint(
                 condition=(
@@ -105,12 +130,25 @@ class GameSession(models.Model):
                     )
                     | (
                         Q(
-                            status__in=["completed", "abandoned", "interrupted"],
+                            status__in=[
+                                "completed",
+                                "abandoned",
+                                "interrupted",
+                            ],
                             ended_at__isnull=False,
                         )
                         & Q(ended_at__gte=F("started_at"))
                     )
                 ),
                 name="game_session_valid_status_and_time",
-            )
+            ),
+
+            models.UniqueConstraint(
+                fields=["user", "game"],
+                condition=Q(status="in_progress"),
+                name="unique_active_game_session",
+            ),
         ]
+
+    def __str__(self):
+        return f"{self.user} - {self.game.name} ({self.status})"

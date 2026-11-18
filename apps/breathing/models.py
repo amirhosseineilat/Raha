@@ -84,10 +84,6 @@ class BreathingSession(models.Model):
 
         constraints = [
             models.CheckConstraint(
-                condition=Q(duration__gt=0),
-                name="breath_session_duration_gt_0",
-            ),
-            models.CheckConstraint(
                 condition=(
                     Q(status="in_progress", ended_at__isnull=True)
                     | (

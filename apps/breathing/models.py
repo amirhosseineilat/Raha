@@ -53,8 +53,10 @@ class BreathingSession(models.Model):
         BreathingExercise, on_delete=models.PROTECT, related_name="breathing_sessions"
     )
 
-    duration = models.PositiveIntegerField()
-    started_at = models.DateTimeField()
+    planned_duration = models.PositiveIntegerField()
+    actual_duration = models.PositiveIntegerField(default=0)
+    
+    started_at = models.DateTimeField(auto_now_add=True)
     ended_at = models.DateTimeField(null=True, blank=True)
 
     status = models.CharField(
